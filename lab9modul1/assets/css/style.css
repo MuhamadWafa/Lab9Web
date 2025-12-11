@@ -1,0 +1,346 @@
+/* ======================================
+    CSS GLOBAL SETTINGS & LAYOUT
+    ====================================== */
+:root {
+    /* Definisi Warna */
+    --primary-color: #007bff; /* Biru Primer */
+    --success-color: #28a745; /* Hijau Sukses (Ubah) */
+    --danger-color: #dc3545; /* Merah Bahaya (Hapus) */
+    --text-color: #333;
+    --light-bg: #f4f4f9; /* Background lebih cerah */
+    --card-bg: #ffffff;
+    --border-color: #dee2e6;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Model Box Sizing yang lebih baik */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light-bg);
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh; /* Memastikan body mengisi seluruh viewport */
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+.container {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 1100px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ======================================
+    HEADER DAN JUDUL (BIRU-PUTIH)
+    ====================================== */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Style untuk kontainer judul (Background Biru, Teks Putih) */
+.header-content {
+    background-color: var(--primary-color); 
+    color: white; 
+    padding: 20px 0; 
+    /* Margin negatif untuk membuat blok biru penuh dari tepi container */
+    margin: -30px -30px 30px -30px; 
+    border-top-left-radius: 10px; 
+    border-top-right-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header-content h1 {
+    color: white; /* Warna teks putih */
+    border-bottom: none; 
+    padding-bottom: 0;
+    margin: 0;
+    font-size: 2.2em;
+    font-weight: 600;
+}
+
+header nav {
+    text-align: center;
+    margin-top: 20px; /* Jarak antara blok biru dan navigasi */
+}
+
+
+.main {
+    flex-grow: 1; /* Konten utama akan mengambil ruang yang tersedia */
+    padding-bottom: 30px;
+}
+
+footer {
+    border-top: 1px solid var(--border-color);
+    padding-top: 15px;
+    text-align: center;
+    color: #6c757d;
+    font-size: 0.9em;
+}
+
+
+/* ======================================
+    NAVIGATION & TOMBOL
+    ====================================== */
+.btn-tambah {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white !important; /* Memastikan warna teks putih */
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 6px;
+    margin: 5px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    border: none;
+}
+
+.btn-tambah:hover {
+    background-color: #0056b3;
+}
+
+
+/* ======================================
+    TABEL DATA BARANG
+    ====================================== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: var(--card-bg);
+}
+
+table th, table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+}
+
+table th {
+    background-color: #e9ecef;
+    color: var(--text-color);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+table tr:hover {
+    background-color: #f8f9fa;
+}
+
+table td img {
+    max-width: 80px; 
+    max-height: 80px;
+    border-radius: 4px;
+    object-fit: cover;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Tombol Aksi */
+.main td:last-child a {
+    text-decoration: none;
+    padding: 6px 10px;
+    margin-right: 5px;
+    border-radius: 4px;
+    color: white;
+    font-size: 13px;
+    transition: opacity 0.3s ease;
+    white-space: nowrap; /* Mencegah tombol putus baris */
+}
+
+.main td:last-child a:first-child { /* Ubah */
+    background-color: var(--success-color); 
+}
+
+.main td:last-child a:last-child { /* Hapus */
+    background-color: var(--danger-color); 
+}
+
+.main td:last-child a:hover {
+    opacity: 0.8;
+}
+
+
+/* ======================================
+    FORM (TAMBAH & UBAH)
+    ====================================== */
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fcfcfc;
+}
+
+.input {
+    margin-bottom: 20px;
+}
+
+.input label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-color);
+    font-size: 0.95em;
+}
+
+.input input[type="text"],
+.input input[type="number"],
+.input input[type="file"],
+.input select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input input:focus,
+.input select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
+.submit input[type="submit"] {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.submit input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Style untuk gambar saat ini di halaman Ubah Data */
+.input p img {
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+/* ======================================
+    RESPONSIVITAS (Mobile Friendly)
+    ====================================== */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    .container {
+        padding: 20px 15px;
+    }
+    
+    /* Sesuaikan margin header-content dengan padding container yang lebih kecil */
+    .header-content {
+        margin: -20px -15px 20px -15px; 
+    }
+    
+    header h1 {
+        font-size: 1.8em;
+    }
+    
+    .btn-tambah {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+    
+    /* Tabel Stackable untuk layar kecil */
+    table, thead, tbody, th, td, tr { 
+        display: block; 
+    }
+    
+    /* Sembunyikan Header Tabel di mode mobile */
+    thead tr { 
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    
+    table tr {
+        border: 1px solid #ccc;
+        margin-bottom: 15px;
+        border-radius: 6px;
+    }
+    
+    table td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+        text-align: right;
+    }
+    
+    /* Label untuk data tabel di mode mobile */
+    table td:before {
+        position: absolute;
+        top: 12px;
+        left: 10px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+        color: #555;
+    }
+    
+    /* Tentukan label untuk setiap kolom */
+    table td:nth-of-type(1):before { content: "Gambar"; }
+    table td:nth-of-type(2):before { content: "Nama Barang"; }
+    table td:nth-of-type(3):before { content: "Kategori"; }
+    table td:nth-of-type(4):before { content: "Harga Jual"; }
+    table td:nth-of-type(5):before { content: "Harga Beli"; }
+    table td:nth-of-type(6):before { content: "Stok"; }
+    table td:nth-of-type(7):before { content: "Aksi"; }
+    
+    table td:last-child {
+        text-align: center;
+        padding-left: 15px;
+    }
+}
+
+/* ======================================
+    PESAN SAMBUTAN (WELCOME MESSAGE)
+    ====================================== */
+.welcome-message {
+    text-align: center;
+    font-size: 1.1em;
+    margin-top: -15px; /* Sedikit menaikkan agar lebih dekat ke header biru */
+    margin-bottom: 25px; /* Jarak ke navigasi tombol */
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.welcome-message strong {
+    color: var(--primary-color); /* Warna biru primer agar nama menonjol */
+    font-weight: 700;
+}
+
+/* KOREKSI: Sesuaikan margin nav agar tidak ada margin ganda */
+header nav {
+    text-align: center;
+    /* margin-bottom akan dihandle oleh .welcome-message */
+    margin-top: 0; 
+}
