@@ -16,8 +16,8 @@ Tahap inisiasi dari modularisasi melibatkan penyusunan ulang hierarki file ke da
 Langkah krusialnya adalah pemusatan pengaturan koneksi. Berkas config/database.php bertindak sebagai repositori sentral untuk menyimpan parameter koneksi database (seperti host, user, pass, dan db). Berkas ini juga bertanggung jawab untuk memastikan validitas dan keberhasilan koneksi ke basis data latihan2 yang ditargetkan.
 
 Selanjutnya, router utama aplikasi, yang diwakili oleh index.php, akan memuat dan menginisialisasi berkas konfigurasi koneksi ini pada permulaan setiap eksekusi program.
+### database.php
 
-C:\xampp\htdocs\lab9modul1\configh\database.php
 ```python
 <?php
 // config/database.php
