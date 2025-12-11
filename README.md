@@ -1,4 +1,4 @@
-# Lab9Web
+<img width="1472" height="704" alt="Gemini_Generated_Image_p5v8mhp5v8mhp5v8" src="https://github.com/user-attachments/assets/5317a535-271f-43ff-991e-6cc3e42d7099" /># Lab9Web
 # Muhamad Wafa Mufida Zulfi
 # 312410334
 # TI.24.A4
@@ -569,6 +569,13 @@ if (isset($_POST['submit'])) {
 </form>
 
 ```
+## Tampilan akhir
+<img width="1408" height="736" alt="Gemini_Generated_Image_4e7num4e7num4e7n" src="https://github.com/user-attachments/assets/f79d363e-fc1b-460e-a668-d4abeb4f2271" />
+
+<img width="1472" height="704" alt="Gemini_Generated_Image_p5v8mhp5v8mhp5v8" src="https://github.com/user-attachments/assets/e1eb0dbe-8298-417d-b3bc-0022cc70ae54" />
+
+<img width="1472" height="704" alt="Gemini_Generated_Image_k65eouk65eouk65e" src="https://github.com/user-attachments/assets/baa0a318-1990-42ea-abd7-3d9c7f1d089c" />
+
 
 
 
