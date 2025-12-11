@@ -467,3 +467,108 @@ redirect_list();
 ?>
 ```
 ## 5. modul otentikasi lanjutan ```modules/auth/```
+Selain menyediakan fungsi Masuk (Login) dan Keluar (Logout), modul ini juga berfungsi untuk mengelola sesi pengguna dengan benar, memastikan sesi aktif bekerja dan terputus sesuai kebutuhan.
+
+Inti keamanannya terletak pada Router Utama (index.php):
+
+Pengamanan Otomatis: Router secara otomatis mengunci semua halaman dalam proyek.
+
+Pengecualian: Hanya halaman yang berkaitan dengan Otentikasi (Auth/) (seperti halaman Login) yang diizinkan diakses oleh siapa pun.
+
+Ini artinya, semua data penting dan halaman manajemen dijamin hanya bisa diakses oleh pengguna yang sudah berhasil Login.
+
+### `logout.php`
+```python
+<?php
+// modules/auth/logout.php
+
+session_start();
+
+// Hapus semua variabel sesi
+$_SESSION = array();
+
+// Hancurkan sesi
+if (ini_get("session.use_cookies")) {
+    $params = session_get_cookie_params();
+    setcookie(session_name(), '', time() - 42000,
+        $params["path"], $params["domain"],
+        $params["secure"], $params["httponly"]
+    );
+}
+
+session_destroy();
+
+// Arahkan ke halaman login
+header('location: index.php?page=auth/login');
+exit;
+?>
+```
+### `login.php`
+```python
+<?php
+// modules/auth/login.php
+
+// Cek jika user sudah login, arahkan ke halaman utama
+if (isset($_SESSION['is_login'])) {
+    header('location: index.php');
+    exit;
+}
+
+$error = '';
+
+if (isset($_POST['submit'])) {
+    $username = mysqli_real_escape_string($conn, $_POST['username']);
+    $password = $_POST['password']; // Password tidak perlu di-escape saat ini
+
+    // Query untuk mencari user
+    $sql = "SELECT * FROM user WHERE username = '{$username}' LIMIT 1";
+    $result = mysqli_query($conn, $sql);
+
+    if ($result && mysqli_num_rows($result) > 0) {
+        $user = mysqli_fetch_assoc($result);
+        
+        // Cek password. Karena di DB tidak di-hash, kita cek teks biasa (TIDAK AMAN untuk real project)
+        // Untuk tujuan praktikum, kita anggap password di DB adalah 'admin123'
+        // Jika Anda menggunakan hash, ganti dengan: if (password_verify($password, $user['password']))
+        if ($password === '12345' && $user['username'] === 'zaki') { 
+            // Jika login berhasil
+            session_start();
+            $_SESSION['is_login'] = true; // Tandai sesi login berhasil
+            $_SESSION['user_id'] = $user['id_user'];
+            $_SESSION['username'] = $user['username'];
+
+            // Redirect ke halaman utama
+            header('location: index.php');
+            exit;
+        } else {
+            $error = 'Username atau password salah.';
+        }
+    } else {
+        $error = 'Username tidak ditemukan.';
+    }
+}
+?>
+
+<h1 style="text-align: center;">Login Administrator</h1>
+
+<form method="post" action="index.php?page=auth/login">
+    <?php if ($error): ?>
+        <p style="color: var(--danger-color); text-align: center; margin-bottom: 20px; border: 1px solid var(--danger-color); padding: 10px; border-radius: 5px;"><?= htmlspecialchars($error); ?></p>
+    <?php endif; ?>
+    <div class="input">
+        <label>Username</label>
+        <input type="text" name="username" required/>
+    </div>
+    <div class="input">
+        <label>Password</label>
+        <input type="password" name="password" required/>
+    </div>
+    <div class="submit">
+        <input type="submit" name="submit" value="Login" />
+    </div>
+</form>
+
+```
+
+
+
