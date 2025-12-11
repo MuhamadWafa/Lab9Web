@@ -1,4 +1,4 @@
-<img width="1472" height="704" alt="Gemini_Generated_Image_p5v8mhp5v8mhp5v8" src="https://github.com/user-attachments/assets/5317a535-271f-43ff-991e-6cc3e42d7099" /># Lab9Web
+# Lab9Web
 # Muhamad Wafa Mufida Zulfi
 # 312410334
 # TI.24.A4
